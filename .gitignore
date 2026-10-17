@@ -1,0 +1,6 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/gym.json
+data/gym.json.tmp

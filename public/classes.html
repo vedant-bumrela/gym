@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f9">
+    <meta name="description" content="Manage gym members, attendance, memberships, and payments in one place.">
+    <title>Classes &middot; Ironhouse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-page="classes">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/dashboard" aria-label="Ironhouse home">
+          <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8v8m14-8v8M2.5 10v4m19-4v4M8 6v12m8-12v12M8 12h8"/></svg></span>
+          <span class="brand-name">ironhouse<span>.</span><small>FITNESS CLUB</small></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/dashboard" class="nav-link" data-page="dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg></span>Overview</a>
+          <a href="/members" class="nav-link" data-page="members"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.9a4 4 0 0 1 0 7.75M20 21v-2a4 4 0 0 0-3-3.87"/></svg></span>Members<span class="nav-count" id="member-count">0</span></a>
+          <a href="/classes" class="nav-link active" data-page="classes" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18m-12 5h.01M12 14h.01M15 14h.01M9 17h.01M12 17h.01"/></svg></span>Classes<span class="nav-count" id="class-count">0</span></a>
+          <a href="/trainers" class="nav-link" data-page="trainers"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0M19 8h3m-1.5-1.5v3"/></svg></span>Trainers</a>
+          <a href="/attendance" class="nav-link" data-page="attendance"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 5 2 2 4-4"/></svg></span>Attendance</a>
+          <a href="/payments" class="nav-link" data-page="payments"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h4"/></svg></span>Payments</a>
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-help">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.8 1c-.8 1.1-2.4 1.2-2.4 3m0 3h.01"/></svg></div>
+          <strong>Need a hand?</strong><span>We're here to help you.</span><a href="mailto:hello@ironhouse.example">Get in touch <span>↗</span></a>
+        </div>
+        <button class="profile" type="button" aria-label="Account: Alex Morgan">
+          <span class="avatar avatar-admin">AM</span><span class="profile-copy"><strong>Alex Morgan</strong><small>Gym administrator</small></span><span class="profile-more">···</span>
+        </button>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-toggle icon-button" id="menu-toggle" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong id="breadcrumb-page">Classes</strong></div>
+          <div class="topbar-actions">
+            <span class="today-label" id="today-label"></span>
+            <button class="icon-button notification-button" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg><i></i></button>
+            <span class="avatar avatar-admin top-avatar">AM</span>
+          </div>
+        </header>
+        <div class="page-wrap"><section class="page-view" id="classes-page">
+            <div class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span> FIND YOUR NEXT FEEL-GOOD</div><h1>Class timetable</h1><p>Little routines make big things happen. Find your next session.</p></div><button class="button button-dark" data-action="add-class"><span class="plus">+</span> Schedule a class</button></div>
+            <div class="week-strip" id="class-week"></div>
+            <div class="class-summary-row"><div><strong id="class-day-title">Today's sessions</strong><span id="class-day-count">0 sessions</span></div><span class="live-badge"><i></i> BOOKING OPEN</span></div>
+            <div class="class-grid" id="class-grid"></div>
+            <div class="empty-state panel class-empty hidden" id="classes-empty">A little breathing room. No classes on this day yet — schedule one to bring the gym to life.</div>
+            <footer class="page-footer"><span>© <span class="copyright-year"></span> Ironhouse Fitness Club</span><span>Built for stronger communities <span class="footer-heart">♥</span></span></footer>
+          </section></div>
+      </main>
+    </div>
+    <div class="modal-backdrop hidden" id="class-modal" role="presentation">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="class-modal-title">
+        <div class="modal-header"><div><div class="eyebrow">MAKE SOMETHING GOOD HAPPEN</div><h2 id="class-modal-title">Schedule a class</h2><p>Put a great session on the timetable.</p></div><button class="icon-button class-modal-close" type="button" aria-label="Close dialog">×</button></div>
+        <form id="class-form"><div class="form-grid">
+          <label class="form-field full-field">Class name<input name="title" placeholder="e.g. Strength & conditioning" required><small class="field-error"></small></label>
+          <label class="form-field">Category<select name="category" required><option value="">Choose a category</option><option>Strength</option><option>HIIT</option><option>Yoga</option><option>Pilates</option><option>Spin</option><option>Boxing</option><option>Mobility</option></select><small class="field-error"></small></label>
+          <label class="form-field">Coach<select name="trainerId" id="class-trainer" required><option value="">Choose a coach</option></select><small class="field-error"></small></label>
+          <label class="form-field">Date<input type="date" name="date" required><small class="field-error"></small></label>
+          <label class="form-field">Start time<input type="time" name="time" required><small class="field-error"></small></label>
+          <label class="form-field">Duration<select name="duration"><option value="30">30 minutes</option><option value="40">40 minutes</option><option value="45">45 minutes</option><option value="50" selected>50 minutes</option><option value="60">60 minutes</option><option value="75">75 minutes</option></select></label>
+          <label class="form-field">Spots available<input name="capacity" type="number" min="1" max="80" value="16" required><small class="field-error"></small></label>
+          <label class="form-field">Level<select name="level"><option>All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+          <label class="form-field full-field">A little about this class<input name="description" placeholder="What can members expect?" required><small class="field-error"></small></label>
+        </div><div class="form-error hidden" id="class-form-error"></div><div class="modal-actions"><button class="button button-light class-modal-close" type="button">Cancel</button><button class="button button-dark" type="submit" id="save-class">Add to timetable <span>→</span></button></div></form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="booking-modal" role="presentation">
+      <section class="modal booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+        <div class="modal-header"><div><div class="eyebrow">SAVE A SPOT</div><h2 id="booking-modal-title">Book a class</h2><p id="booking-modal-detail">Choose a member for this session.</p></div><button class="icon-button booking-modal-close" type="button" aria-label="Close dialog">×</button></div>
+        <form id="booking-form"><label class="form-field">Member<select name="memberId" id="booking-member" required><option value="">Choose a member</option></select></label><div class="modal-actions"><button class="button button-light booking-modal-close" type="button">Cancel</button><button class="button button-dark" type="submit" id="save-booking">Confirm booking <span>→</span></button></div></form>
+      </section>
+    </div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

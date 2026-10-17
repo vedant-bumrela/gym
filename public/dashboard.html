@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f9">
+    <meta name="description" content="Manage gym members, attendance, memberships, and payments in one place.">
+    <title>Overview &middot; Ironhouse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-page="dashboard">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/dashboard" aria-label="Ironhouse home">
+          <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8v8m14-8v8M2.5 10v4m19-4v4M8 6v12m8-12v12M8 12h8"/></svg></span>
+          <span class="brand-name">ironhouse<span>.</span><small>FITNESS CLUB</small></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/dashboard" class="nav-link active" data-page="dashboard" aria-current="page"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg></span>Overview</a>
+          <a href="/members" class="nav-link" data-page="members"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.9a4 4 0 0 1 0 7.75M20 21v-2a4 4 0 0 0-3-3.87"/></svg></span>Members<span class="nav-count" id="member-count">0</span></a>
+          <a href="/classes" class="nav-link" data-page="classes"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18m-12 5h.01M12 14h.01M15 14h.01M9 17h.01M12 17h.01"/></svg></span>Classes<span class="nav-count" id="class-count">0</span></a>
+          <a href="/trainers" class="nav-link" data-page="trainers"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0M19 8h3m-1.5-1.5v3"/></svg></span>Trainers</a>
+          <a href="/attendance" class="nav-link" data-page="attendance"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 5 2 2 4-4"/></svg></span>Attendance</a>
+          <a href="/payments" class="nav-link" data-page="payments"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h4"/></svg></span>Payments</a>
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-help">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.8 1c-.8 1.1-2.4 1.2-2.4 3m0 3h.01"/></svg></div>
+          <strong>Need a hand?</strong><span>We're here to help you.</span><a href="mailto:hello@ironhouse.example">Get in touch <span>↗</span></a>
+        </div>
+        <button class="profile" type="button" aria-label="Account: Alex Morgan">
+          <span class="avatar avatar-admin">AM</span><span class="profile-copy"><strong>Alex Morgan</strong><small>Gym administrator</small></span><span class="profile-more">···</span>
+        </button>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-toggle icon-button" id="menu-toggle" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong id="breadcrumb-page">Overview</strong></div>
+          <div class="topbar-actions">
+            <span class="today-label" id="today-label"></span>
+            <button class="icon-button notification-button" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg><i></i></button>
+            <span class="avatar avatar-admin top-avatar">AM</span>
+          </div>
+        </header>
+        <div class="page-wrap"><section class="page-view" id="dashboard-page">
+            <div class="page-heading">
+              <div><div class="eyebrow"><span class="live-dot"></span> YOUR CLUB AT A GLANCE</div><h1>Good morning, Vedantt <span class="wave">✳</span></h1><p>Here's what's happening at your gym today.</p></div>
+              <button class="button button-dark" data-action="add-member"><span class="plus">+</span> Add a member</button>
+            </div>
+            <div class="stats-grid">
+              <article class="stat-card"><div class="stat-top"><span>Total members</span><span class="stat-icon icon-lilac"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.9a4 4 0 0 1 0 7.75M20 21v-2a4 4 0 0 0-3-3.87"/></svg></span></div><div class="stat-value" id="stat-members">—</div><div class="stat-note"><span class="trend-positive">↗ Growing stronger</span><span> this month</span></div></article>
+              <article class="stat-card"><div class="stat-top"><span>Active memberships</span><span class="stat-icon icon-green"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span></div><div class="stat-value" id="stat-active">—</div><div class="stat-note"><span class="status-pill status-good"><i></i> In good standing</span></div></article>
+              <article class="stat-card"><div class="stat-top"><span>Revenue this month</span><span class="stat-icon icon-yellow"><svg viewBox="0 0 24 24"><path d="M12 2v20m5-15.5A4 4 0 0 0 13 4h-2a4 4 0 0 0 0 8h2a4 4 0 0 1 0 8h-2a4 4 0 0 1-4-2.5"/></svg></span></div><div class="stat-value" id="stat-revenue">—</div><div class="stat-note"><span class="stat-note-muted">Membership payments collected</span></div></article>
+              <article class="stat-card"><div class="stat-top"><span>Check-ins today</span><span class="stat-icon icon-blue"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span></div><div class="stat-value" id="stat-checkins">—</div><div class="stat-note"><span class="trend-positive">● Live</span><span> Today's attendance</span></div></article>
+            </div>
+
+            <article class="panel dashboard-classes"><div class="panel-heading"><div><h2>On the timetable today</h2><p>Good energy starts with a good session.</p></div><a href="/classes" class="text-link">Explore classes <span>→</span></a></div><div class="dashboard-class-list" id="dashboard-classes"></div></article>
+            <div class="dashboard-grid">
+              <article class="panel revenue-panel"><div class="panel-heading"><div><h2>Revenue overview</h2><p>Your membership income over time</p></div><span class="select-label">Last 6 months <span>⌄</span></span></div><div class="chart-summary"><strong id="chart-total">£0</strong><span>Collected in the last 6 months</span></div><div class="chart-area"><div class="chart-y-axis"><span>£400</span><span>£300</span><span>£200</span><span>£100</span><span>£0</span></div><div class="chart-bars" id="revenue-chart"></div></div></article>
+              <article class="panel activity-panel"><div class="panel-heading"><div><h2>Recent check-ins</h2><p>Your members are showing up</p></div><a href="/attendance" class="text-link">View all <span>→</span></a></div><div class="activity-list" id="recent-attendance"></div></article>
+            </div>
+            <article class="panel expiring-panel"><div class="panel-heading"><div><h2>Memberships to keep an eye on</h2><p>These memberships are ending in the next 30 days</p></div><a href="/members" class="text-link">All members <span>→</span></a></div><div class="table-wrap"><table><thead><tr><th>MEMBER</th><th>PLAN</th><th>EXPIRES</th><th>STATUS</th><th></th></tr></thead><tbody id="expiring-members"></tbody></table></div></article>
+            <footer class="page-footer"><span>© <span class="copyright-year"></span> Ironhouse Fitness Club</span><span>Built for stronger communities <span class="footer-heart">♥</span></span></footer>
+          </section></div>
+      </main>
+    </div>
+    <div class="modal-backdrop hidden" id="member-modal" role="presentation">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header"><div><div class="eyebrow">GROW YOUR COMMUNITY</div><h2 id="modal-title">Add a member</h2><p>Fill in the details to create a membership.</p></div><button class="icon-button modal-close" data-action="close-modal" aria-label="Close dialog">×</button></div>
+        <form id="member-form" novalidate><div class="form-grid"><label class="form-field full-field">Full name<input name="name" autocomplete="name" placeholder="e.g. Taylor Morgan" required><small class="field-error"></small></label><label class="form-field">Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required><small class="field-error"></small></label><label class="form-field">Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="07xxx xxxxxx" required><small class="field-error"></small></label><label class="form-field">Fitness goal<select name="goal" required><option value="">Choose a goal</option><option>Strength</option><option>Yoga</option><option>Pilates</option><option>Cardio</option><option>General fitness</option></select><small class="field-error"></small></label><label class="form-field">Membership plan<select name="plan" required><option value="">Choose a plan</option><option>Basic</option><option>Standard</option><option>Premium</option></select><small class="field-error"></small></label></div><div class="form-error hidden" id="member-form-error"></div><div class="modal-actions"><button class="button button-light" type="button" data-action="close-modal">Cancel</button><button class="button button-dark" type="submit" id="save-member">Add member <span>→</span></button></div></form>
+      </section>
+    </div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>
